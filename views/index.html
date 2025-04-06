@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Progress Tracker</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Gym Progress Tracker</h1>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div id="alerts"></div>
+    
+    <div class="tabs">
+      <button class="tab-button" data-tab="add-exercise-tab">Add Exercise</button>
+      <button class="tab-button" data-tab="update-progress-tab">Update Progress</button>
+      <button class="tab-button" data-tab="view-progress-tab">View Progress</button>
+    </div>
+    
+    <!-- Add Exercise Tab -->
+    <div id="add-exercise-tab" class="tab-content">
+      <h2>Add New Exercise</h2>
+      <form id="add-exercise-form">
+        <div class="form-group">
+          <label for="exercise-name">Exercise Name:</label>
+          <input type="text" id="exercise-name" placeholder="Enter exercise name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="muscle-group">Muscle Group:</label>
+          <select id="muscle-group" class="muscle-group-dropdown" required>
+            <option value="">Select Muscle Group</option>
+          </select>
+        </div>
+        
+        <button type="submit">Add Exercise</button>
+      </form>
+      
+      <h3>Existing Exercises</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Exercise Name</th>
+            <th>Muscle Group</th>
+          </tr>
+        </thead>
+        <tbody id="exercises-table-body">
+          <!-- Exercises will be populated here -->
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Update Progress Tab -->
+    <div id="update-progress-tab" class="tab-content">
+      <h2>Record Progress</h2>
+      <form id="add-progress-form">
+        <div class="form-group">
+          <label for="progress-exercise">Select Exercise:</label>
+          <select id="progress-exercise" required>
+            <option value="">Select Exercise</option>
+            <!-- Exercises will be populated here -->
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="weight">Weight (lbs/kg):</label>
+          <input type="number" id="weight" step="0.1" min="0" placeholder="Enter weight" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" required>
+        </div>
+        
+        <button type="submit">Record Progress</button>
+      </form>
+      
+      <h3>Recent Progress</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Weight</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="progress-table-body">
+          <!-- Progress entries will be populated here -->
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- View Progress Tab -->
+    <div id="view-progress-tab" class="tab-content">
+      <h2>View Progress</h2>
+      
+      <div class="filter-controls">
+        <div>
+          <label for="chart-muscle-group">Muscle Group:</label>
+          <select id="chart-muscle-group" class="muscle-group-dropdown">
+            <option value="all">All Muscle Groups</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="chart-exercise">Exercise:</label>
+          <select id="chart-exercise">
+            <option value="all">All Exercises</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="chart-time-range">Time Range:</label>
+          <select id="chart-time-range">
+            <option value="all-time">All Time</option>
+            <option value="last-month">Last Month</option>
+            <option value="last-3-months">Last 3 Months</option>
+            <option value="last-6-months">Last 6 Months</option>
+          </select>
+        </div>
+        
+        <button id="generate-chart">Generate Chart</button>
+      </div>
+      
+      <div id="chart-container" class="chart-container">
+        <!-- Chart will be displayed here -->
+      </div>
+    </div>
+  </div>
+  
+  <script src="/js/main.js"></script>
+</body>
+</html>
